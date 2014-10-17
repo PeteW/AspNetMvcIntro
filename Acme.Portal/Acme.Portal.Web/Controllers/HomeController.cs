@@ -1,16 +1,43 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
+using Acme.Portal.Core.DataModels;
 using Acme.Portal.Web.Models.Home;
-
 namespace Acme.Portal.Web.Controllers
 {
     public class HomeController : Controller
     {
+        static private IDatabaseContext DatabaseContext = new Acme.Portal.Core.DataModels.DatabaseContext();
+
+        public static IDatabaseContext CurrentContext
+        {
+            get { return DatabaseContext; }
+        }
+
+        public HomeController()
+        {
+        }
+
+        public HomeController(IDatabaseContext databaseContext)
+        {
+            DatabaseContext = databaseContext;
+        }
+
         /// <summary>
         /// Display a list of NPIs.
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
+            try
+            {
+                var npis = CurrentContext.Npis.ToList();
+            }
+            catch (SystemException ex)
+            {
+                var msg = ex.Message;
+            }
+
             return View();
         }
 
@@ -34,7 +61,7 @@ namespace Acme.Portal.Web.Controllers
         [HttpPost]
         public ActionResult Edit(HomeEditViewModel viewModel)
         {
-            
+            return View(viewModel);
         }
     }
 }

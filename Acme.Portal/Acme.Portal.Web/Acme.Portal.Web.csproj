@@ -153,6 +153,12 @@
   <ItemGroup>
     <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Acme.Portal.Core\Acme.Portal.Core.csproj">
+      <Project>{221e9cc0-5543-40b0-a73e-329cf3f2342a}</Project>
+      <Name>Acme.Portal.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
