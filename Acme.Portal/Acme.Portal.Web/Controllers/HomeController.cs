@@ -5,6 +5,7 @@ using Acme.Portal.Core.DataModels;
 using Acme.Portal.Web.Models.Home;
 namespace Acme.Portal.Web.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         static private IDatabaseContext DatabaseContext = new Acme.Portal.Core.DataModels.DatabaseContext();

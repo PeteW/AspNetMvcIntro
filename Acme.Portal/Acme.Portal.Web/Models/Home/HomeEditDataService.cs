@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Acme.Portal.Web.Controllers;
 
 namespace Acme.Portal.Web.Models.Home
@@ -8,7 +9,12 @@ namespace Acme.Portal.Web.Models.Home
         public HomeEditViewModel GetById(int id)
         {
             var npi = HomeController.CurrentContext.Npis.Find(id);
-            return new HomeEditViewModel(npi);
+            if (npi != null)
+                return new HomeEditViewModel(npi);
+            else
+            {
+                throw new Exception("Bad Id");
+            }
         }
     }
 }
