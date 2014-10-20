@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Portal.Core", "Acme.Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Portal.Test", "Acme.Portal.Test\Acme.Portal.Test.csproj", "{3E6F27E7-F95E-44E9-8A9C-F6D9CB9A55F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Portal.DataGenerators", "Acme.Portal.DataGenerators\Acme.Portal.DataGenerators.csproj", "{0E2F0FA2-3AAE-4E2C-BB12-DF8F14283FA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{3E6F27E7-F95E-44E9-8A9C-F6D9CB9A55F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E6F27E7-F95E-44E9-8A9C-F6D9CB9A55F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E6F27E7-F95E-44E9-8A9C-F6D9CB9A55F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E2F0FA2-3AAE-4E2C-BB12-DF8F14283FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E2F0FA2-3AAE-4E2C-BB12-DF8F14283FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E2F0FA2-3AAE-4E2C-BB12-DF8F14283FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E2F0FA2-3AAE-4E2C-BB12-DF8F14283FA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -50,7 +50,7 @@ namespace Acme.Portal.Web.Controllers
         /// <returns></returns>
         public ActionResult Edit(int id)
         {
-            var viewModel = new HomeEditDataService().GetById(id);
+            var viewModel = new HomeEditDataService(DatabaseContext).GetById(id);
             return View(viewModel);
         }
 
