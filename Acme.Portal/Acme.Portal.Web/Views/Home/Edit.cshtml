@@ -4,4 +4,10 @@
 @model Acme.Portal.Web.Models.Home.HomeEditViewModel
 
     <h2>Edit</h2>
-    @Model.Npi.Id is @Model.Npi.Name
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.Id)
+    @Html.TextBoxFor(x=>x.Name)
+    <input type="submit" value="Save or update"/>
+}

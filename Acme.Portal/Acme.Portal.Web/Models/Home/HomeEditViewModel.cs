@@ -1,14 +1,8 @@
-﻿using Acme.Portal.Core.DataModels;
-
-namespace Acme.Portal.Web.Models.Home
+﻿namespace Acme.Portal.Web.Models.Home
 {
     public class HomeEditViewModel
     {
-        public Npi Npi { get; set; }
-
-        public HomeEditViewModel(Npi npi)
-        {
-            Npi = npi;
-        }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

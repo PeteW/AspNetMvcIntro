@@ -9,8 +9,8 @@ namespace Acme.Portal.Test
     public class TestDbSet<T> : DbSet<T>, IQueryable, IEnumerable<T>
         where T : class
     {
-        ObservableCollection<T> _data;
-        IQueryable _query;
+        private ObservableCollection<T> _data;
+        private IQueryable _query;
 
         public TestDbSet()
         {
