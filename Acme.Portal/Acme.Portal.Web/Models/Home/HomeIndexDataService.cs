@@ -18,7 +18,8 @@ namespace Acme.Portal.Web.Models.Home
             {
                 var vm = new HomeIndexViewModel
                 {
-                    Npis = context.Npi.ToList()
+                    Page = page,
+                    Npis = context.Npi.OrderBy(x => x.Id).Skip(page * count).Take(count).ToList()
                 };
                 return vm;
             }

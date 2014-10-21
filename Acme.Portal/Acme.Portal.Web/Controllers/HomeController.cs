@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Acme.Portal.Core.DataModels;
+using Acme.Portal.Core.Utils;
 using Acme.Portal.Web.Models.Home;
 namespace Acme.Portal.Web.Controllers
 {
@@ -28,9 +29,12 @@ namespace Acme.Portal.Web.Controllers
         /// Display a list of NPIs.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ActionResult Index(int? id = 0)
         {
-            var viewModel = new HomeIndexDataService(DatabaseContext).GetPage(0, 5);
+            int page = id ?? 0;
+            page = page >= 0 ? page : 0;
+
+            var viewModel = new HomeIndexDataService(DatabaseContext).GetPage(page, 3);
             return View(viewModel);
         }
 
