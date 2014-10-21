@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAppContext.cs" />
     <Compile Include="TestDbSet.cs" />
     <Compile Include="TestNpiDbSet.cs" />
   </ItemGroup>

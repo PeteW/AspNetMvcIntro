@@ -13,7 +13,7 @@ namespace Acme.Portal.Test
         [TestMethod]
         public void TestMethod1()
         {
-            var controller = new HomeController(new TestAppContext());
+            var controller = new HomeController();
 
             var result = controller.Index() as ViewResult;
 
@@ -24,32 +24,22 @@ namespace Acme.Portal.Test
         [TestMethod]
         public void TestMethod2()
         {
-            var context = new TestAppContext();
-            context.Npis.Add(new Npi() { Id = 1, Name = "Test1" });
-            context.Npis.Add(new Npi() { Id = 2, Name = "Test2" });
-            context.Npis.Add(new Npi() { Id = 3, Name = "Test3" });
+            var controller = new HomeController();
 
-            var controller = new HomeController(context);
-
-            var result = controller.Edit(3) as ViewResult;
+            var result = controller.Edit(9) as ViewResult;
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Model is HomeEditViewModel);
             var model = result.Model as HomeEditViewModel;
-            Assert.AreEqual(3, model.Npi.Id);
-            Assert.AreEqual("Test3", model.Npi.Name);
+            Assert.AreEqual(9, model.Id);
+            Assert.AreEqual("Mazda", model.Name);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
-        public void TestMethod2a()
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TestFail1()
         {
-            var context = new TestAppContext();
-            context.Npis.Add(new Npi() { Id = 1, Name = "Test1" });
-            context.Npis.Add(new Npi() { Id = 2, Name = "Test2" });
-            context.Npis.Add(new Npi() { Id = 3, Name = "Test3" });
-
-            var controller = new HomeController(context);
+            var controller = new HomeController();
 
             var result = controller.Edit(99 /* Not legal */) as ViewResult;
             Assert.IsNull(result);

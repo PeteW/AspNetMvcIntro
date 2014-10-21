@@ -19,7 +19,7 @@ namespace Acme.Portal.Web.Models.Home
         {
             using (var context = new DatabaseContext())
             {
-                return context.Npis.Where(x => x.Id == id)
+                return context.Npi.Where(x => x.Id == id)
                                  .Select(x => new HomeEditViewModel()
                                      {
                                          Id = x.Id,
@@ -39,12 +39,12 @@ namespace Acme.Portal.Web.Models.Home
                 if (viewModel.Id == 0)
                 {
                     npi = new Npi();
-                    context.Npis.Add(npi);
+                    context.Npi.Add(npi);
                 }
                 //otherwise update
                 else
                 {
-                    npi = context.Npis.Single(x => x.Id == viewModel.Id);
+                    npi = context.Npi.Single(x => x.Id == viewModel.Id);
                 }
                 npi.Name = viewModel.Name;
                 context.SaveChanges();

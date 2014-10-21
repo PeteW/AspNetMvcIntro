@@ -32,7 +32,7 @@ namespace Acme.Portal.Web.Controllers
         {
             try
             {
-                var npis = CurrentContext.Npis.ToList();
+                var npi = CurrentContext.Npi.ToList();
             }
             catch (SystemException ex)
             {

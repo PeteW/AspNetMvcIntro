@@ -5,6 +5,6 @@ namespace Acme.Portal.Core.DataModels
 {
     public interface IDatabaseContext : IDisposable
     {
-        DbSet<Npi> Npis { get; set; }
+        DbSet<Npi> Npi { get; set; }
     }
 }
