@@ -30,16 +30,8 @@ namespace Acme.Portal.Web.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            try
-            {
-                var npi = CurrentContext.Npi.ToList();
-            }
-            catch (SystemException ex)
-            {
-                var msg = ex.Message;
-            }
-
-            return View();
+            var viewModel = new HomeIndexDataService(DatabaseContext).GetPage(0, 5);
+            return View(viewModel);
         }
 
 
@@ -62,7 +54,8 @@ namespace Acme.Portal.Web.Controllers
         [HttpPost]
         public ActionResult Edit(HomeEditViewModel viewModel)
         {
-            return View(viewModel);
+            new HomeEditDataService(DatabaseContext).SaveOrUpdate(viewModel);
+            return RedirectToAction("Index");
         }
     }
 }

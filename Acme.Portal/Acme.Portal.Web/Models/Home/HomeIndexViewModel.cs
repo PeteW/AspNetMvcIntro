@@ -1,7 +1,10 @@
-﻿namespace Acme.Portal.Web.Models.Home
+﻿using System.Collections.Generic;
+using Acme.Portal.Core.DataModels;
+
+namespace Acme.Portal.Web.Models.Home
 {
     public class HomeIndexViewModel
-    {   // added comment just to test git
-         
+    {
+        public List<Npi> Npis { get; set; }
     }
 }

@@ -1,11 +1,19 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+@model Acme.Portal.Web.Models.Home.HomeIndexViewModel
 
 <h2>Index</h2>
-Hello bob
-<a href="/Home/Edit/1">Edit #1</a>
-<a href="/Home/Edit/2">Edit #2</a>
-<a href="/Home/Edit/3">Edit #3</a>
-<a href="/Home/Edit/4">Edit #4</a>
-<a href="/Home/Edit/5">Edit #5</a>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <table border="1" cellpadding="6">
+        @for (int i = 0; i < Model.Npis.Count; i++)
+        {
+            <tr>
+                <td>
+                    <a href="/Home/Edit/@Model.Npis[i].Id">@Model.Npis[i].Name</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
