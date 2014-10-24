@@ -7,8 +7,8 @@
 
 @using (Html.BeginForm("Edit", "Home", FormMethod.Post))
 {
-    @Html.HiddenFor(x=>x.Id)
-    @Html.TextBoxFor(x=>x.Name)
+    @Html.HiddenFor(m=>m.Id)
+    @Html.TextBoxFor(m=>m.Name)
     <input type="submit" value="Save or update"/>
 }
 <br/>

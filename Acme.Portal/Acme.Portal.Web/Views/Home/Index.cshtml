@@ -1,22 +1,50 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model Acme.Portal.Web.Models.Home.HomeIndexViewModel
 
 <h2>Index</h2>
-@using (Html.BeginForm("Index", "Home", FormMethod.Get))
-{
-    <table border="1" cellpadding="6">
-        @for (int i = 0; i < Model.Npis.Count; i++)
-        {
-            <tr>
-                <td>
-                    <a href="/Home/Edit/@Model.Npis[i].Id">@Model.Npis[i].Name</a>
-                </td>
-            </tr>
-        }
-    </table>
-}
 
-<a href="/Home/Index/@(Model.Page - 1)">Prev</a>
-<a href="/Home/Index/@(Model.Page + 1)">Next</a>
+<div id="NpiList">
+    @{ Html.RenderPartial("_IndexViewList"); }
+</div>
+    <button type="button" class="btn btn-success" id="prev-btn">Prev</button>
+    <button type="button" class="btn btn-success" id="next-btn">Next</button>
+
+
+    @section scripts
+{
+        <script type="text/javascript">
+            $(function () {
+                $("#prev-btn").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("IndexUpdate")',
+                        type: "post",
+                        cache: false,
+                        data: { id: parseInt($("#Page").val(), 10)-1 },
+                        success: function (data) {
+                            $("#NpiList").html(data);
+                        }
+                    }).done(function () {
+                        // do nothing
+                    });
+                });
+
+                $("#next-btn").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("IndexUpdate")',
+                        type: "post",
+                        cache: false,
+                        data: { id: parseInt($("#Page").val(), 10)+1 },
+                        success: function (data) {
+                            $("#NpiList").html(data);
+                        }
+                    }).done(function () {
+                        // do nothing
+                    });
+                });
+
+            });
+        </script>
+    }

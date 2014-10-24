@@ -38,6 +38,15 @@ namespace Acme.Portal.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        public ActionResult IndexUpdate(int? id = 0)
+        {
+            int page = id ?? 0;
+            page = page >= 0 ? page : 0;
+
+            var viewModel = new HomeIndexDataService(DatabaseContext).GetPage(page, 3);
+            return PartialView("_IndexViewList", viewModel);
+        }
 
         /// <summary>
         /// Edits a specific Npi by ID.

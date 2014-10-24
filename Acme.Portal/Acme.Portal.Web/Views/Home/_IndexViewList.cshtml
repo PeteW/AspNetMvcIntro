@@ -1,0 +1,17 @@
+﻿@model Acme.Portal.Web.Models.Home.HomeIndexViewModel
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+        @Html.HiddenFor(m => m.Page)
+
+        <table border="1" cellpadding="6">
+            @foreach (var npi in Model.Npis)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(@npi.Name, "Edit", new { Id = @npi.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+}
