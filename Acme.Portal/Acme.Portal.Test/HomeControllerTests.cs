@@ -69,6 +69,64 @@ namespace Acme.Portal.Test
         }
 
         [TestMethod]
+        public void TestIndexUpdateDefault()
+        {
+            var controller = new HomeController();
+            var expectedPage = 0;
+
+            var result = controller.IndexUpdate() as PartialViewResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Model is HomeIndexViewModel);
+            var model = result.Model as HomeIndexViewModel;
+            Assert.AreEqual(expectedPage, model.Page);
+        }
+
+        [TestMethod]
+        public void TestIndexUpdateNull()
+        {
+            var controller = new HomeController();
+            var expectedPage = 0;
+
+            var result = controller.IndexUpdate(null) as PartialViewResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Model is HomeIndexViewModel);
+            var model = result.Model as HomeIndexViewModel;
+            Assert.AreEqual(expectedPage, model.Page);
+        }
+
+        [TestMethod]
+        public void TestIndexUpdateMinus1()
+        {
+            var controller = new HomeController();
+            var expectedPage = 0;
+            var requestedPage = -1;
+
+            var result = controller.IndexUpdate(requestedPage) as PartialViewResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Model is HomeIndexViewModel);
+            var model = result.Model as HomeIndexViewModel;
+            Assert.AreEqual(expectedPage, model.Page);
+        }
+
+        [TestMethod]
+        public void TestIndexUpdatePage2()
+        {
+            var controller = new HomeController();
+            var expectedPage = 2;
+            var requestedPage = 2;
+
+            var result = controller.IndexUpdate(requestedPage) as PartialViewResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Model is HomeIndexViewModel);
+            var model = result.Model as HomeIndexViewModel;
+            Assert.AreEqual(expectedPage, model.Page);
+        }
+
+        [TestMethod]
         public void TestEditValid()
         {
             var controller = new HomeController();
